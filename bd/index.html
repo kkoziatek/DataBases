@@ -1,0 +1,88 @@
+﻿<html lang="pl-PL">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="Stylesheet" type="text/css" href="style.css" />
+<title>Zadanie zaliczeniowe BD</title>
+</head>
+
+<body>
+<div id="top">
+
+<div id="NAGLOWEK">
+<h1 align = "center" style="color: #3b5998"> Zadanie zaliczeniowe na przedmiot Bazy danych </h1>
+</div>
+
+<div id="MENU">
+<ul>
+<li><a href="index.html">Strona główna</a></li>
+<li><a href="podstrona1.html">Diagram ERD</a></li>
+<li><a href="podstrona2.html">Skrypt SQL</a></li>
+<li><a href="podstrona3.php">Aplikacja</a></li>
+</ul>
+</div>
+
+<div id="TRESC">
+Turniej siatkarski.
+
+<h3>Założenia</h3>
+
+<p>Zaprojektuj bazę danych dla turnieju siatkarskiego.  W bazie powinny się
+znaleźć informacje o drużynach, ich zawodnikach i rozegranych meczach (wraz
+z wynikami i składami drużyn w meczu).  Pamiętaj, że zawodnik mógł zagrać
+tylko w niektórych meczach, ale zawsze w tej samej drużynie.  Postaraj się
+zadbać o poprawność danych w bazie.
+
+</p><p>Na potrzeby zadania przyjmujemy, że w pojedynczym meczu drużyna składa się
+z dokładnie 6 zawodników (w rzeczywistości tylu może przebywać naraz
+na boisku, ale można dokonywać zmian).
+
+</p><p>Gra się do 3 wygranych setów, ostateczny wynik meczu to np. 3:1.
+Przyjmujemy, że seta wygrywa się zdobywając 21 punktów (upraszczając 
+znowu niektóre fragmenty rzeczywistości).  Wynik każdego seta też należy
+przechowywać.
+
+</p><p>Oprócz bazy danych należy zaimplementować niewielką aplikację dla
+dwóch kategorii użytkowników: organizatorów turnieju i kibiców.
+
+</p><p>Aplikacja powinna umożliwiać organizatorom:
+</p><ol>
+<li>Dokonywanie zgłoszeń drużyn do turnieju (czyli wprowadzanie drużyn do 
+    bazy danych).
+</li><li>Podawanie listy zawodników drużyny.
+</li><li>Zamknięcie zgłoszeń (być może przez termin).
+</li><li>Ustalanie meczów do rozegrania.
+</li><li>Zgłaszanie składu drużyn na mecz (do momentu rozegrania meczu).
+</li><li>Rozegranie meczu: wpisanie wyniku itp.
+</li></ol>
+
+<p>Kibice powinni mieć możliwość oglądania opisów meczy wybranej drużyny
+lub wybranego zawodnika.  Można również wybrać jeden z meczy i obejrzeć 
+szczegóły (np. składy). 
+
+</p><h3>Warunki zaliczenia</h3>
+
+<p>Należy przygotować
+</p><ul>
+<li>Model ERD umieszczony na stronie WWW w pracowni.
+</li><li>Skrypt tworzący bazę danych w PostgreSQL na serwerze w laboratorium
+studenckim.  Oprócz definicji tabel skrypt musi zawierać co najmniej jeden
+sensowny wyzwalacz (wymóg dydaktyczny).  Skrypt należy również umieścić na
+stronie.
+</li><li>Aplikację klienta na Linuxa, może to być aplikacja WWW lub zwykły 
+program.  Na zajęciach omówimy pisanie aplikacji w PHP, ale można
+pisać dowolnym języku programowania (no może poza C++, Basicem, Perlem
+i asemblerem).
+</li>
+
+</ul>
+</div>
+
+
+<div id="STOPKA">Copyright 2017 by Krystian Koziatek</div>
+
+</div>
+
+<hr>
+
+</body>
+</html>

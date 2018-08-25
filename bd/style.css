@@ -1,0 +1,96 @@
+html, body {
+	background-color: #a5d5ff;
+	color: #000;
+	margin: 0;
+	padding: 0;
+}
+
+#NAGLOWEK {
+	background-color: #a5d5ff;
+	margin: 0;
+	padding: 0;
+	line-height:50px;
+}
+
+#MENU {
+	width: 202px;
+	float: left;
+	overflow: hidden;
+	position: relative;
+	background-color: #a5d5ff;
+}
+
+#TRESC {
+	margin-left: 300px;
+	background-color: #fff;
+	margin-top: 20px;
+    	margin-bottom: 100px;
+    	margin-right: 100px;
+	padding: 10px 30px
+}
+
+#STOPKA {
+	clear: both;
+	background-color: #90c0da;
+}
+
+#TRESC ul li {
+	list-style-type: disc;
+	display: list-item;
+}
+
+#TRESC a:link, a:visited {
+    	background-color: #a5d5ff;;
+    	color: black;
+    	padding: 12px 25px;
+    	text-align: center;
+    	text-decoration: none;
+    	display: inline-block;
+    	font-weight: bold;
+	color: #4d70ba;
+}
+
+
+#TRESC a:hover, a:active {
+    background-color: #a5d5ff;
+}
+
+#MENU ul, ul li {
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#MENU ul li {
+	width: 190px;
+	padding-left: 10px;
+	background: #3b5998;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ccccff #465d8c #465d8c #ccccff;
+}
+
+#MENU ul a:link, ul a:visited {
+	display: block;
+	width: 169px;
+	text-decoration: none;
+	padding: 5px 10px;
+	font-weight: bold;
+	background: #99ccff;
+	color: #4d70ba;
+	border-left: 1px solid #3b5998;
+}
+
+#MENU ul a:hover {
+	background-color: #3b5998;
+	color: #ffffff;
+}
+
+table, th, td {
+	border: 3px solid black;
+	border-collapse: collapse;
+	border-color: #a5d5ff;
+}
+
+

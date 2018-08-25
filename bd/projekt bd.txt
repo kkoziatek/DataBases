@@ -1,0 +1,37 @@
+1. Ogarn¹æ graficznie
+OK - divy
+OK - nazwa Logowanie -> aplikacja
+
+2. Nowe strony
+OK - strona dla organizatorów
+
+3. Nowe logowanie
+OK - logowanie dla organizatorów
+OK - pg_escape_string()
+OK - wylogowywanie
+
+4. Bazy danych
+OK - poprawa skryptu SQL 
+OK - utworzenie baz danych 
+OK - ogarn¹æ wyzwalacz (max 5 setów w meczu)
+
+5. Aplikacja (pamiêtaæ o pg_escape_string())
+OK- funkcje dla organizatorów
+  OK- w tym sprawdzenia poprawnoœci danych (np. max 5 setów, set wygrywaj¹cy zawsze 21 pktów itd.)
+OK- funkcje dla kibiców
+
+OK - uniemozliwic zglaszanie po zamknieciu zgloszen
+OK - spr. czy ok data zglaszania zawodnika (ma byc przed rozegraniem meczu)
+OK- dodac trigger na 6 zawodnikow w meczu
+
+- UWAGA ! wynik_meczu1 zmieniony i nie uploadowany
+- poprawiæ trigger
+- blokada na wpisywanie wyniku, jesli za maly sklad
+- poprawiæ skrypt sql
+- poprawa diagramu ERD (i dodaæ opisy linii)
+- tekst na czarno zamiast czerwonego tam, gdzie nie ma b³êdów
+Szlifowanie:
+- exit()
+- order by przy wyœwietlaniu
+- nazwy adresów stron
+- pg_close($link)

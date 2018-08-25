@@ -1,0 +1,133 @@
+﻿<html lang="pl-PL">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="Stylesheet" type="text/css" href="style.css" />
+<title>Zadanie zaliczeniowe BD</title>
+</head>
+
+<body>
+<div id="top">
+
+<div id="NAGLOWEK">
+<h1 align = "center" style="color: #3b5998"> Zadanie zaliczeniowe na przedmiot Bazy danych </h1>
+</div>
+
+<div id="MENU">
+<ul>
+<li><a href="index.html">Strona główna</a></li>
+<li><a href="podstrona1.html">Diagram ERD</a></li>
+<li><a href="podstrona2.html">Skrypt SQL</a></li>
+<li><a href="podstrona3.php">Aplikacja</a></li>
+</ul>
+</div>
+
+<div id="TRESC">
+<h2 align="center">Skrypt generujący bazę danych</h2>
+
+DROP TABLE IF EXISTS Wejscie_zawodnika;<br/> 
+DROP TABLE IF EXISTS Zawodnik;<br/>
+DROP TABLE IF EXISTS Sety; <br/>
+DROP TABLE IF EXISTS Mecz; <br/>
+DROP TABLE IF EXISTS Druzyna; <br/>
+<br/><br/>
+
+CREATE TABLE Druzyna (<br/>
+    id_druzyny SERIAL NOT NULL,<br/>
+    nazwa varchar(40)  NOT NULL,<br/>
+    PRIMARY KEY (id_druzyny)<br/>
+);<br/>
+<br/><br/>
+
+CREATE TABLE Mecz (<br/>
+    id_meczu SERIAL NOT NULL,<br/>
+    data date  NOT NULL,<br/>
+    druzyna1_id int  NOT NULL,<br/>
+    druzyna2_id int  NOT NULL,<br/>
+    wynik int  NULL,<br/>
+    PRIMARY KEY (id_meczu),<br/>
+    FOREIGN KEY (druzyna1_id) REFERENCES Druzyna (id_druzyny),<br/>
+    FOREIGN KEY (druzyna2_id) REFERENCES Druzyna (id_druzyny) <br/>
+);<br/>
+<br/><br/>
+
+CREATE TABLE Sety (<br/>
+    id_meczu int  NOT NULL,<br/>
+    nr_seta int  NOT NULL,<br/>
+    wynik int  NULL,<br/>
+    PRIMARY KEY (id_meczu,nr_seta),<br/>
+    FOREIGN KEY (id_meczu) REFERENCES Mecz (id_meczu)<br/>  
+);<br/>
+<br/><br/>
+
+CREATE TABLE Zawodnik (<br/>
+    id_zawodnika SERIAL NOT NULL,<br/>
+    imie varchar(30)  NOT NULL,<br/>
+    nazwisko varchar(30)  NOT NULL,<br/>
+    id_druzyny int  NOT NULL,<br/>
+    PRIMARY KEY (id_zawodnika),<br/>
+    FOREIGN KEY (id_druzyny) REFERENCES Druzyna (id_druzyny)<br/>
+);<br/>
+<br/><br/>
+
+CREATE TABLE Wejscie_zawodnika (<br/>
+    id_zawodnika int  NOT NULL,<br/>
+    id_meczu int  NOT NULL,<br/>
+    PRIMARY KEY (id_zawodnika,id_meczu),<br/>
+    FOREIGN KEY (id_zawodnika) REFERENCES Zawodnik (id_zawodnika),<br/>
+    FOREIGN KEY (id_meczu) REFERENCES Mecz (id_meczu)<br/>
+);<br/>
+<br/><br/>
+
+ALTER SEQUENCE Druzyna_id_druzyny_seq RESTART WITH 1;<br/>
+ALTER SEQUENCE Mecz_id_meczu_seq RESTART WITH 1;<br/>
+ALTER SEQUENCE Zawodnik_id_zawodnika_seq RESTART WITH 1;<br/>
+<br/><br/><br/>
+
+
+create or replace function spr_poprawnosc_setow() returns trigger as $$ <br/>
+declare <br/>
+maks integer:=0;<br/><br/>
+
+begin<br/>
+SELECT MAX(nr_seta) into maks FROM Sety WHERE id_meczu = new.id_meczu;<br/><br/>
+
+if maks >= 5 then <br/>
+raise exception 'W meczu nie może być więcej niż 5 setów !'; <br/>
+else return new; <br/>
+end if; <br/><br/>
+
+end;<br/> 
+$$ language plpgsql; <br/>
+create trigger poprawnosc_setow <br/>
+before insert or update on Sety <br/>
+for each row execute procedure spr_poprawnosc_setow(); <br/><br/><br/>
+
+
+create or replace function spr_zawodnikow_w_meczu() returns trigger as $$ <br/>
+declare <br/>
+liczba integer:=0;<br/><br/>
+
+begin<br/>
+SELECT count(id_zawodnika) into liczba FROM wejscie_zawodnika WHERE id_meczu = new.id_meczu;<br/><br/>
+
+if maks >= 6 then <br/>
+raise exception 'W meczu nie może być więcej niż 6 zawodników !'; <br/>
+else return new; <br/>
+end if; <br/>
+
+end; <br/>
+$$ language plpgsql; <br/>
+create trigger liczba_zawodnikow_w_meczu <br/>
+before insert or update on wejscie_zawodnika <br/>
+for each row execute procedure spr_zawodnikow_w_meczu(); <br/>
+</div>
+
+
+<div id="STOPKA">Copyright 2017 by Krystian Koziatek</div>
+
+</div>
+
+<hr>
+
+</body>
+</html>
